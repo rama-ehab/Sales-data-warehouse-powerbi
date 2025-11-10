@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="AdventureWorks-DW"
+  DTS:DTSID="{05A334D1-B216-4E5F-A123-5155FD265D18}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost\OLAP;Initial Catalog=AdventureWorks-DW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Adv_Work-{05A334D1-B216-4E5F-A123-5155FD265D18}localhost\OLAP.AdventureWorks-DW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
