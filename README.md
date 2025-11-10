@@ -54,5 +54,6 @@
 graph TD
     A[OLTP Database] --> B[SSIS ETL Packages]
     B --> C[Staging Database]
-    C --> D[Data Warehouse (DW)]
+    C --> D[Data Warehouse - DW]
     D --> E[Power BI Dashboard]
+
