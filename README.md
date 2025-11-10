@@ -1,40 +1,37 @@
 # 📊 Sales Data Warehouse & Power BI Dashboard
 
 > **Description:**  
-> A complete end-to-end data analytics solution built with **SQL Server**, **SSIS**, and **Power BI** to transform raw transactional data into actionable business insights.  
-> The project involves designing and implementing a **Star Schema Data Warehouse**, developing **dynamic ETL pipelines** (initial and incremental loads), handling **Slowly Changing Dimensions (SCDs)** for historical tracking, and optimizing analytical queries with **Columnstore Indexes**.  
-> The data warehouse powers a fully interactive **Power BI dashboard** that visualizes sales performance, profit trends, and product-level insights — empowering data-driven decision-making across business units.
+> End-to-end data analytics solution built with **SQL Server**, **SSIS**, and **Power BI** to transform raw sales data into actionable business insights.  
+> The project features a **Star Schema Data Warehouse**, **dynamic ETL pipelines** (initial and incremental loads), **Slowly Changing Dimensions (SCDs)** for historical tracking, and **Columnstore Indexes** for fast analytics.  
+> The data warehouse powers a fully interactive **Power BI dashboard** that visualizes sales trends, profit performance, and product-level KPIs for data-driven decision-making.
 
 ---
 
 ## 🔧 Key Features
 
 ### 🧩 Star Schema Design
-- Designed a **Star Schema** consisting of **FactSales** (fact table) and multiple **Dim tables** such as Customer, Product, and Date.  
-- Enables simplified querying and fast aggregations in Power BI and SQL Server Analysis.
+- Fact table: `FactSales`  
+- Dimension tables: `DimCustomer`, `DimProduct`, `DimDate`, `DimGeography`  
+- Optimized for fast OLAP queries and interactive reporting.
 
 ### ⚙️ ETL Process (SSIS)
-- Built **SSIS packages** to automate **Initial Loads** and **Incremental Loads** from the operational database (OLTP).  
-- Implemented a **Watermark Table** to track last extraction dates for incremental runs.  
-- Integrated error handling, data validation, and logging mechanisms for reliability.
+- Automated **initial** and **incremental loads** from OLTP to DW.  
+- Includes **staging tables**, data validation, error handling, and logging.  
+- Uses a **Watermark Table** to track incremental updates.
 
 ### 🕒 Slowly Changing Dimensions (SCDs)
-- Implemented **Type 2 SCDs** for the Product dimension to maintain historical cost and price changes.  
-- Used **SSIS SCD transformations** and custom T-SQL logic for efficient updates.
+- Type 2 SCDs for Product dimension (tracking price and category changes).  
+- Maintains full historical accuracy for analysis over time.
 
 ### ⚡ Columnstore Indexes
-- Applied **Clustered Columnstore Indexes** on the `FactSales` table to significantly improve query performance for analytical workloads.
-
-### 🗄️ Data Warehouse in SQL Server
-- Developed the entire Data Warehouse in **SQL Server** under the `[AdventureWorks-DW].[Sales]` schema.  
-- Ensured referential integrity and optimized table relationships for OLAP analysis.
+- Applied **Clustered Columnstore Indexes** on `FactSales` for high-performance analytics.
 
 ### 📈 Power BI Dashboard
-- Built a visually rich **Power BI dashboard** on top of the OLAP model to analyze:
-  - 🕑 Sales trends over time (yearly, monthly, daily)
-  - 🌍 Profit performance by region, product category, and customer segment
-  - 📊 Product-level KPIs (Sales, Profit, Margin %, Quantity)
-  - 📉 Comparative analysis and dynamic filtering (date, region, product)
+- Interactive visuals:  
+  - Sales trends over time  
+  - Profit performance by region and product category  
+  - Product-level KPIs (Sales, Profit, Margin %, Quantity)  
+  - Dynamic filtering and comparative analysis
 
 ---
 
@@ -42,19 +39,20 @@
 
 | Category | Tools Used |
 |-----------|-------------|
-| **Database & ETL** | SQL Server, SSIS (SQL Server Integration Services) |
-| **Data Modeling** | Star Schema, OLAP Design, SCDs |
-| **Query Language** | T-SQL |
-| **Visualization** | Power BI |
-| **Optimization** | Columnstore Indexes, Incremental Loading |
-| **Version Control** | Git & GitHub |
+| Database & ETL | SQL Server, SSIS (SQL Server Integration Services) |
+| Data Modeling | Star Schema, OLAP Design, SCDs |
+| Query Language | T-SQL |
+| Visualization | Power BI |
+| Optimization | Columnstore Indexes, Incremental Loading |
+| Version Control | Git & GitHub |
 
 ---
 
 ## 🔄 ETL Flow Overview
 
+```mermaid
 graph TD
-A[OLTP Database] --> B[SSIS ETL Packages]
-B --> C[Staging Database]
-C --> D[Data Warehouse (DW)]
-D --> E[Power BI Dashboard]
+    A[OLTP Database] --> B[SSIS ETL Packages]
+    B --> C[Staging Database]
+    C --> D[Data Warehouse (DW)]
+    D --> E[Power BI Dashboard]
