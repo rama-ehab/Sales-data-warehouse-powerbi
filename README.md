@@ -53,7 +53,6 @@
 
 ## 🔄 ETL Flow Overview
 
-```mermaid
 graph TD
 A[OLTP Database] --> B[SSIS ETL Packages]
 B --> C[Staging Database]
